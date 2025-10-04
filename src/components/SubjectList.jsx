@@ -1,6 +1,8 @@
-
+// src/components/SubjectList.jsx
+// 🟢 Commit 8: add delete subject option
 import React, { useState } from "react";
-import { FaBook, FaPlus } from "react-icons/fa";
+import { FaBook, FaPlus, FaTrash } from "react-icons/fa";
+import { formatTime } from "../utils/formatTime";
 
 export default function SubjectList({ subjects, setSubjects, selectedId, setSelectedId }) {
   const [name, setName] = useState("");
@@ -12,6 +14,13 @@ export default function SubjectList({ subjects, setSubjects, selectedId, setSele
     setSubjects([...subjects, { id, name: trimmed, time: 0 }]);
     setName("");
     setSelectedId(id);
+  };
+
+  const deleteSubject = (id) => {
+    const ok = window.confirm("Are you sure you want to delete this subject and its data?");
+    if (!ok) return;
+    setSubjects(subjects.filter((s) => s.id !== id));
+    if (selectedId === id) setSelectedId(null);
   };
 
   return (
@@ -30,13 +39,22 @@ export default function SubjectList({ subjects, setSubjects, selectedId, setSele
             {subjects.map((s) => (
               <li
                 key={s.id}
-                onClick={() => setSelectedId(s.id)}
-                className={`p-2 rounded cursor-pointer flex justify-between items-center ${
+                className={`p-2 rounded flex justify-between items-center ${
                   selectedId === s.id ? "bg-indigo-50 border border-indigo-200" : "hover:bg-gray-50"
                 }`}
               >
-                <span>{s.name}</span>
-                <span className="text-xs text-gray-500">{s.time}s</span>
+                <div className="flex items-center gap-3 cursor-pointer" onClick={() => setSelectedId(s.id)}>
+                  <span>{s.name}</span>
+                  <span className="text-xs text-gray-500">{formatTime(s.time)}</span>
+                </div>
+
+                <button
+                  onClick={() => deleteSubject(s.id)}
+                  className="text-red-500 p-1 rounded hover:bg-red-50"
+                  title="Delete subject"
+                >
+                  <FaTrash />
+                </button>
               </li>
             ))}
           </ul>
