@@ -1,24 +1,83 @@
-
+// src/components/Timer.jsx
 import React, { useEffect, useRef, useState } from "react";
 import { FaPlay, FaPause, FaSave } from "react-icons/fa";
 import { formatTime } from "../utils/formatTime";
 
 export default function Timer({ selectedId, subjects, setSubjects }) {
-  // ... same logic as before ...
-  // calculate displayedSeconds (base + running elapsed) as number
+  const [running, setRunning] = useState(false);
+  const startRef = useRef(null);
+
+  // ✅ find the selected subject
+  const selected = subjects.find((s) => s.id === selectedId);
+
+  // ✅ calculate total seconds
   const base = selected ? selected.time : 0;
-  const elapsed = running && startRef.current ? Math.floor((Date.now() - startRef.current) / 1000) : 0;
+  const elapsed =
+    running && startRef.current
+      ? Math.floor((Date.now() - startRef.current) / 1000)
+      : 0;
   const totalSeconds = base + elapsed;
 
-  // rest logic unchanged...
+  // ✅ update timer display every second while running
+  useEffect(() => {
+    let interval;
+    if (running) {
+      interval = setInterval(() => {
+        // trigger re-render each second
+        setSubjects((prev) => [...prev]);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [running, setSubjects]);
+
+  // ✅ start timer
+  const handleStart = () => {
+    if (!selected) return;
+    setRunning(true);
+    startRef.current = Date.now();
+  };
+
+  // ✅ pause timer
+  const handlePause = () => {
+    if (!selected) return;
+    setRunning(false);
+    const extra = Math.floor((Date.now() - startRef.current) / 1000);
+    setSubjects((prev) =>
+      prev.map((s) =>
+        s.id === selected.id ? { ...s, time: s.time + extra } : s
+      )
+    );
+  };
+
+  // ✅ save/reset timer manually
+  const handleSaveReset = () => {
+    if (!selected) return;
+    setRunning(false);
+    const extra = running
+      ? Math.floor((Date.now() - startRef.current) / 1000)
+      : 0;
+
+    setSubjects((prev) =>
+      prev.map((s) =>
+        s.id === selected.id ? { ...s, time: s.time + extra } : s
+      )
+    );
+    startRef.current = null;
+  };
+
+  // ✅ UI
   return (
     <div className="bg-white rounded-2xl shadow p-4 text-center">
       <h2 className="text-lg font-semibold mb-2">Timer</h2>
 
       {selected ? (
         <>
-          <div className="mb-3 text-sm text-gray-600">Now studying:</div>
-          <div className="text-2xl font-mono mb-4">{formatTime(totalSeconds)}</div>
+          <div className="mb-3 text-sm text-gray-600">
+            Now studying: <span className="font-medium">{selected.name}</span>
+          </div>
+          <div className="text-2xl font-mono mb-4">
+            {formatTime(totalSeconds)}
+          </div>
 
           <div className="flex justify-center gap-2">
             <button

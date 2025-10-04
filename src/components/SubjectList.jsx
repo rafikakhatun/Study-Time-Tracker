@@ -1,5 +1,4 @@
-// src/components/SubjectList.jsx
-// 🟢 Commit 8: add delete subject option
+
 import React, { useState } from "react";
 import { FaBook, FaPlus, FaTrash } from "react-icons/fa";
 import { formatTime } from "../utils/formatTime";
