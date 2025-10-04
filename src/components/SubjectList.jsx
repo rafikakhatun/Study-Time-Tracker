@@ -1,5 +1,4 @@
-// src/components/SubjectList.jsx
-// 🟢 Commit 3: Add SubjectList component with add/select logic
+
 import React, { useState } from "react";
 import { FaBook, FaPlus } from "react-icons/fa";
 

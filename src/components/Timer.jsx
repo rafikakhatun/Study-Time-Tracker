@@ -1,5 +1,4 @@
-// src/components/Timer.jsx
-// 🟢 Commit 4: Add Timer component with start/pause/save using timestamp method
+
 import React, { useEffect, useRef, useState } from "react";
 import { FaPlay, FaPause, FaSave } from "react-icons/fa";
 

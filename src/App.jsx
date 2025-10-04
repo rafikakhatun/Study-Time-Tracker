@@ -1,5 +1,4 @@
-// src/App.js
-// 🟢 Commit 2: Create main App layout and central state skeleton
+
 import React, { useState } from "react";
 import SubjectList from "./components/SubjectList";
 import Timer from "./components/Timer";
