@@ -1,6 +1,7 @@
 
 import React from "react";
 import { FaChartPie } from "react-icons/fa";
+import { formatTime } from "../utils/formatTime";
 
 export default function Stats({ subjects }) {
   const total = subjects.reduce((sum, s) => sum + s.time, 0);
@@ -21,7 +22,7 @@ export default function Stats({ subjects }) {
             {subjects.map((s) => (
               <li key={s.id} className="flex justify-between">
                 <span>{s.name}</span>
-                <span className="font-mono">{s.time}s</span>
+                <span className="font-mono">{formatTime(s.time)}</span>
               </li>
             ))}
           </ul>
@@ -31,7 +32,7 @@ export default function Stats({ subjects }) {
       <hr className="my-3" />
       <div className="flex justify-between font-semibold">
         <span>Total</span>
-        <span className="font-mono">{total}s</span>
+        <span className="font-mono">{formatTime(total)}</span>
       </div>
     </div>
   );

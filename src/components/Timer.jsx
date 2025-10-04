@@ -1,5 +1,4 @@
-// src/components/Timer.jsx
-// 🟢 Commit 7: display formatted time (HH:MM:SS)
+
 import React, { useEffect, useRef, useState } from "react";
 import { FaPlay, FaPause, FaSave } from "react-icons/fa";
 import { formatTime } from "../utils/formatTime";
