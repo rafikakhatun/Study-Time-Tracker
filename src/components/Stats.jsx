@@ -7,10 +7,10 @@ export default function Stats({ subjects }) {
   const total = subjects.reduce((sum, s) => sum + s.time, 0);
 
   return (
-    <div className="bg-white rounded-2xl shadow p-4">
+    <div className="bg-white rounded-2xl border border-gray-200 shadow-md p-6">
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-lg font-semibold flex items-center gap-2">
-          <FaChartPie /> Stats
+          <FaChartPie className="text-indigo-600" /> <span className="text-lg font-bold  bg-gradient-to-r from-red-500 via-yellow-600 to-green-600 bg-clip-text text-transparent">Stats</span>
         </h2>
       </div>
 

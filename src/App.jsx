@@ -44,7 +44,7 @@ export default function App() {
     <div className="min-h-screen p-6 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         <header className="mb-6">
-          <h1 className="text-3xl font-bold text-center">Study Time Tracker</h1>
+          <h1 className="text-3xl font-bold text-center bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 bg-clip-text text-transparent ">Study Time Tracker</h1>
         </header>
 
         <main className="grid md:grid-cols-3 gap-6">

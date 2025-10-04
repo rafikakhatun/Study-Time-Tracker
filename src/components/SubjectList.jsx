@@ -23,16 +23,16 @@ export default function SubjectList({ subjects, setSubjects, selectedId, setSele
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow p-4">
+    <div className="bg-white border border-gray-200  rounded-2xl shadow-md p-6">
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-lg font-semibold flex items-center gap-2">
-          <FaBook /> Subjects
+          <FaBook className="text-indigo-600" /> <span className="text-xl font-bold text-center bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 bg-clip-text text-transparent ">Subjects</span>
         </h2>
       </div>
 
       <div className="mb-3">
         {subjects.length === 0 ? (
-          <p className="text-sm text-gray-500">No subjects yet — add one.</p>
+          <p className="text-sm text-gray-500 border ">No subjects yet — add one.</p>
         ) : (
           <ul className="space-y-2">
             {subjects.map((s) => (
