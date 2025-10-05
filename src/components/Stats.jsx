@@ -29,6 +29,8 @@ export default function Stats({ subjects }) {
         )}
       </div>
 
+    {/* total time */}
+
       <hr className="my-3" />
       <div className="flex justify-between font-semibold">
         <span>Total</span>
