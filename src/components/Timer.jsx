@@ -1,9 +1,10 @@
-// src/components/Timer.jsx
+
 import React, { useEffect, useRef, useState } from "react";
 import { FaPlay, FaPause, FaSave } from "react-icons/fa";
 import { formatTime } from "../utils/formatTime";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { IoTimerSharp } from "react-icons/io5";
+
 
 export default function Timer({ selectedId, subjects, setSubjects }) {
     const [running, setRunning] = useState(false);
@@ -67,7 +68,7 @@ export default function Timer({ selectedId, subjects, setSubjects }) {
         startRef.current = null;
     };
 
-    //  UI
+    //  UI design
     return (
         <div className="bg-white border border-gray-200 rounded-2xl shadow-md p-6 text-center">
             <div className="flex justify-center items-center gap-2">
