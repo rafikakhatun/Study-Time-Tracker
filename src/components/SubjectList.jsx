@@ -32,7 +32,7 @@ export default function SubjectList({ subjects, setSubjects, selectedId, setSele
 
       <div className="mb-3">
         {subjects.length === 0 ? (
-          <p className="text-sm text-gray-500 border ">No subjects yet — add one.</p>
+          <p className="text-sm text-gray-500 border border-gray-200 shadow rounded-md  px-4 py-2 ">No subjects yet — add one.</p>
         ) : (
           <ul className="space-y-2">
             {subjects.map((s) => (
@@ -64,7 +64,7 @@ export default function SubjectList({ subjects, setSubjects, selectedId, setSele
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="flex-1 border p-2 rounded"
+          className="flex-1 border border-indigo-600 p-2 rounded"
           placeholder="New subject name"
         />
         <button

@@ -54,7 +54,6 @@ export default function App() {
             selectedId={selectedId}
             setSelectedId={setSelectedId}
           />
-
           <Timer selectedId={selectedId} subjects={subjects} setSubjects={setSubjects} />
 
           <Stats subjects={subjects} />
